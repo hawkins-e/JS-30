@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Console Tricks!</title>
+</head>
+<body>
+
+  <p onClick="makeGreen()">×BREAK×DOWN×</p>
+
+  <script>
+    const dogs = [{ name: 'Snickers', age: 2 }, { name: 'hugo', age: 8 }];
+
+    function makeGreen() {
+      const p = document.querySelector('p');
+      p.style.color = '#BADA55';
+      p.style.fontSize = '50px';
+    }
+
+    // Regular
+    console.log("hello")
+    
+
+    // Interpolated
+    console.log('Hello I am a %s string', 'Jane')
+    // this also works with ES6 backticks
+    let Jane = 2*4  
+    console.log (`Hello, I am ${Jane}`)
+
+    // Styled
+    console.log('%c I am some great text!','font-size:40px; background:blue;')
+
+    // warning!
+    console.warn("OH! NOOO!"); 
+
+    // Error :|
+    console.error("ALERT! ERROR!");
+
+    // Info
+    console.info("hello") //unfortunately the info icon does not appear in my browser despite that the documentation states that it's compatible with Chrome 
+
+    // Testing
+    //check to see if things are true. only fires if something is wrong. 
+    console.assert( 1 === 2, 'That is wrong!');
+
+    // clearing
+    // console.clear();
+    //clears the console :) 
+
+    // Viewing DOM Elements
+    // console.log(p);
+    // console.dir(p);
+
+    // Grouping together
+    // Really awesome functionality that allows you to group information by a group name 
+    dogs.forEach(dog => {
+      console.groupCollapsed(`${dog.name}`);
+      console.log(`This is ${dog.name}`);
+      console.log(`${dog.name} is ${dog.age} years old`);
+      console.log(`${dog.name} is ${dog.age * 7} dog years old`);
+      console.groupEnd(`${dog.name}`);   
+    });
+
+    // counting
+    //will count however many times you use a specific thing.
+
+    console.count("Erica")
+    console.count("Erica")
+    console.count("Erica")
+    console.count("Erica")
+    console.count("Erica")
+    console.count("Erica")
+    console.count("Erica")
+    console.count("Erica")
+    console.count("Erica")
+    console.count("Erica")
+    console.count("Erica")
+
+    // timing
+    //will tell us how long it took to fetch a particular set of data. 
+    console.time('fetching data');
+    fetch('https://api.github.com/users/hawkins-e')
+      .then(data => data.json())
+      .then(data => {
+        console.timeEnd('fetching data');
+        console.log(data);
+      });
+
+
+  </script>
+</body>
+</html>
